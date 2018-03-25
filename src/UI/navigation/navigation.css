@@ -1,0 +1,26 @@
+.main__site__navigation {
+    position: fixed;
+    left:0;
+    right: 0;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+    padding: 1rem 0;
+    text-align: center;
+    background: #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,.15);
+}
+
+.main__site__navigation > ul > li {
+    display: inline-block;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.main__site__navigation > ul > li > a {
+    color : #222;
+    font-size: 0.88rem;
+    text-transform: uppercase;
+}
+
+/* .main__site__navigation > ul > li  */

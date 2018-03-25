@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,500,600,700');
+
+body {
+    font-family: 'Fira Sans', sans-serif;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+[class*="screen"] {
+    height: 100vh; 
+    background-size: cover;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.screen1 {
+    position: relative;
+    background: rgba(0,0,0,.5) url(../../images/bg1.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.screen1 > h2 {
+    box-shadow: 0 0 25px rgba(0,0,0,.5);    
+    margin: 0;
+    font-size: 5rem;
+    background: #fff;
+    /* padding: 1rem 3rem; */
+}
+
+table {
+    box-shadow: 0 0 25px rgba(0,0,0,.5);        
+}
+
+.screen1 > h2 > a {
+    padding: 1rem 3rem;
+    display: block;    
+    color: #222;
+}
