@@ -1,12 +1,12 @@
 import React from 'react';
-import classes from './surveyone.css';
+import classes from './welcome.css';
 import { Link } from 'react-router-dom';
 
-const surveyone = (props) => {
+const welcome = (props) => {
     return (
         <div className={ classes.screen1 }  >
             <h2>
-                <Link to="/surveytwo" >
+                <Link to="/generalinfo" >
                     NEXT
                 </Link>
             </h2>
@@ -14,4 +14,4 @@ const surveyone = (props) => {
     );
 }
 
-export default surveyone;
+export default welcome;

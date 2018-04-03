@@ -1,35 +1,49 @@
 import React, { Component } from 'react';
-import classes from './surveythree.css';
+import classes from './preferences.css';
 import { Link } from 'react-router-dom';
 
 
-class SurveyThree extends Component {
+class Preferences extends Component {
 
     state = {
-        preferenceSupercars : false,
-        preferenceCruiserBikes : false,
-        preferenceCoupcars : false,
-        preferenceSedancars : false,
-        preferenceCitycar : false
+        inputboxdisabled : true,
+        validationrules : {
+            preferenceSupercars : false,
+            preferenceCruiserBikes : false,
+            preferenceCoupcars : false,
+            preferenceSedancars : false,
+            preferenceCitycar : false
+        }
     }
 
     _updateCheckBoxButtonValues = (e) => {
+
+        if (document.getElementsByName('preferenceCitycar')[0].checked) { 
+            this.setState({ inputboxdisabled : false });
+        } 
+        else {
+            this.setState({ inputboxdisabled : true });
+            document.getElementsByName('preferenceCitycarName')[0].value = "";
+        }
+
         let newStateOfCheckboxs = {
             preferenceSupercars : document.getElementsByName('preferenceSupercars')[0].checked,
             preferenceCruiserBikes : document.getElementsByName('preferenceCruiserBikes')[0].checked,
             preferenceCoupcars : document.getElementsByName('preferenceCoupcars')[0].checked,
             preferenceSedancars : document.getElementsByName('preferenceSedancars')[0].checked,
-            preferenceCitycar : document.getElementsByName('preferenceCitycar')[0].checked
+            preferenceCitycar : document.getElementsByName('preferenceCitycar')[0].checked && document.getElementsByName('preferenceCitycarName')[0].value !== ""
         }
 
         this.setState({
-            ...newStateOfCheckboxs
+            validationrules : {
+                ...newStateOfCheckboxs                
+            }
         });
     }
 
     _ToggleNextScreenButton = (e) => {
 
-        let currentState = this.state; 
+        let currentState = this.state['validationrules']; 
 
         let checkboxStatus =  Object.keys(currentState).map( (value) => {
             return currentState[value];
@@ -38,9 +52,7 @@ class SurveyThree extends Component {
         let ArrayOfCheckboxValues = checkboxStatus.some((value) => {
             return value === true;
         });
-
-        console.log(ArrayOfCheckboxValues);
-
+        
         if(!ArrayOfCheckboxValues) {
             e.preventDefault();
         }
@@ -71,7 +83,13 @@ class SurveyThree extends Component {
                             </li>
                             <li>
                                 <input name="preferenceCitycar" type="checkbox" onChange={ this._updateCheckBoxButtonValues } />
-                                <label>I prefer a City car</label>
+                                <label>I prefer a city car Preferably</label>
+                                <input 
+                                    type="text" 
+                                    name="preferenceCitycarName" 
+                                    placeholder="city car preference" 
+                                    disabled={ this.state.inputboxdisabled }
+                                    onChange={ this._updateCheckBoxButtonValues } />
                             </li>
                         </ul>
                     </div>
@@ -86,4 +104,4 @@ class SurveyThree extends Component {
 
 }
 
-export default SurveyThree;
+export default Preferences;

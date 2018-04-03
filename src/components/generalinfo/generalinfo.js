@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import classes from './surveytwo.css';
+import classes from './generalinfo.css';
 import { Link } from 'react-router-dom';
+// import 'icheck/skins/flat/aero.css';
+import { Checkbox, Radio } from 'react-icheck';
 
 
-class SurveyTwo extends Component {
+class GeneralInfo extends Component {
 
     state = {
         genderRadioClick : false,
@@ -79,7 +81,7 @@ class SurveyTwo extends Component {
                         </tr> 
                         <tr>
                             <td colSpan="2">
-                                <Link to="/surveythree" className={ [classes.btn , classes["btn--fullwidth"] , classes.btn__next  ].join(' ') } 
+                                <Link to="/preferences" className={ [classes.btn , classes["btn--fullwidth"] , classes.btn__next  ].join(' ') } 
                                         onClick={ this._ToggleNextScreenButton } >
                                     Next
                                 </Link>
@@ -93,4 +95,4 @@ class SurveyTwo extends Component {
 
 }
 
-export default SurveyTwo;
+export default GeneralInfo;

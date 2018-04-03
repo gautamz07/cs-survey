@@ -1,22 +1,18 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Surveyone from './components/surveyone/surveyone';
-import Surveytwo from './components/surveytwo/surveytwo';
-import Surveythree from './components/surveythree/surveythree';
-import Navigation from './UI/navigation/navigation';
-import { Route , BrowserRouter } from 'react-router-dom';
-
+// import welcome from './components/welcome/welcome';
+// import Generalinfo from './components/generalinfo/generalinfo';
+// import Preferences from './components/preferences/preferences';
+// import Navigation from './UI/navigation/navigation';
+import { Route , BrowserRouter } from 'react-router-dom'; 
+import Surveyholder from './surveyholder/surveyholder'
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <div className="App">
-          <Navigation />
-          <Route path="/" exact component={ Surveyone } />  
-          <Route path="/surveytwo" exact component={ Surveytwo } />
-          <Route path="/surveythree" exact component={ Surveythree } />
+          <Surveyholder />
         </div>
       </BrowserRouter>
     );

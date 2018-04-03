@@ -58,6 +58,23 @@
     border-bottom: none;    
 }
 
+input[type="text"] {
+    outline:none;
+    height: 28px;
+    border: none;
+    padding-left: 0.5rem;
+    /* width: 100%; */
+    border-bottom: 1px solid #ccc;
+}
+
+input[type="text"]:focus {
+    border-bottom-color: lightblue;
+}
+
+.surveyPreferencesQs .surveyPreferencesQs__indi > ul > li > input[type="text"] {
+    margin-left: 1rem;
+}
+
 .surveyPreferencesQs > .btn {
     margin-top: 1.5rem;
 }

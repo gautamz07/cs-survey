@@ -10,14 +10,13 @@ const navigation = (props) => {
         <nav className={ classes.main__site__navigation }>
             <ul>
                 <li>
-                    <Link to="/" 
-                        activeClassName="active">
+                    <Link to="/">
                         1
                     </Link>
                 </li>
                 <li>
                     <Link to={{
-                            pathname : '/surveytwo'
+                            pathname : '/generalinfo'
                         }}
                         className={ classes.active }
                     >
@@ -26,7 +25,7 @@ const navigation = (props) => {
                 </li>
                 <li>
                     <Link to={{
-                            pathname : '/surveythree'
+                            pathname : '/preferences'
                         }}>
                         3
                     </Link>

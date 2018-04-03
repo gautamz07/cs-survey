@@ -1,0 +1,5 @@
+TASK :: Control application state through Redux.
+    - Make one parent component that loads all the child components.
+    - Setup redux store, reducers etc.
+    - Make multiple reducers for each screen.
+    .... TO be continued further.
