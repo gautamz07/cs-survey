@@ -3,6 +3,7 @@ import classes from './generalinfo.css';
 import { Link } from 'react-router-dom';
 // import 'icheck/skins/flat/aero.css';
 import { Checkbox, Radio } from 'react-icheck';
+import { connect } from 'react-redux';
 
 
 class GeneralInfo extends Component {
@@ -45,6 +46,9 @@ class GeneralInfo extends Component {
     } 
 
     render() {
+
+        console.log(this.state.infoObj)
+
         return (
             <div className={ classes.screen2 } >
                 <table className={ classes.initial__survey__details__table }>
@@ -61,21 +65,21 @@ class GeneralInfo extends Component {
                     <tbody>
                         <tr>
                             <td>
-                                <input type="radio" name="customer_gender" onChange={ this._updateRadioButtonValues } />                                     
+                                <input type="radio" name="genderRadio" onChange={ (e) => this.props.validateRadioInput(e) } />                                     
                                 <label>Male</label>
                             </td>
                             <td>
-                                <input type="radio" name="customer_age" onChange={ this._updateRadioButtonValues } />                                   
+                                <input type="radio" name="ageRadio" onChange={ (e) => this.props.validateRadioInput(e) } />                                   
                                 <label>Less than 35</label>
                             </td>     
                         </tr>
                         <tr>
                             <td>
-                                <input type="radio" name="customer_gender" onChange={ this._updateRadioButtonValues } />                                    
+                                <input type="radio" name="genderRadio" onChange={ (e) => this.props.validateRadioInput(e) } />                                    
                                 <label>Female</label>
                             </td>
                             <td>
-                                <input type="radio" name="customer_age" onChange={ this._updateRadioButtonValues } />                                    
+                                <input type="radio" name="ageRadio" onChange={ (e) => this.props.validateRadioInput(e) } />                                    
                                 <label>More than 35</label>
                             </td>     
                         </tr> 
@@ -95,4 +99,18 @@ class GeneralInfo extends Component {
 
 }
 
-export default GeneralInfo;
+
+const mapStateToProps = state => {
+    return {
+        infoObj : state.gen
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        validateRadioInput : (e) => dispatch({ type: 'VALI_RADIO_INP' , payload : e })
+    }
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(GeneralInfo);
