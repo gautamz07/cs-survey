@@ -47,4 +47,8 @@
     font-weight: bold;
 }
 
+.active {
+    color: pink;
+}
+
 /* .main__site__navigation > ul > li  */

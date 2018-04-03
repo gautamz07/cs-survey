@@ -46,9 +46,7 @@ class GeneralInfo extends Component {
     } 
 
     render() {
-
-        console.log(this.state.infoObj)
-
+        console.log(this.state.infoObj);
         return (
             <div className={ classes.screen2 } >
                 <table className={ classes.initial__survey__details__table }>
