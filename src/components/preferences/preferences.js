@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import classes from './preferences.css';
 import { Link } from 'react-router-dom';
-
+import { connect } from 'react-redux';
+import axios from 'axios'; 
 
 class Preferences extends Component {
 
-    state = {
+    /* state = {
         inputboxdisabled : true,
         validationrules : {
             preferenceSupercars : false,
@@ -39,19 +40,30 @@ class Preferences extends Component {
                 ...newStateOfCheckboxs                
             }
         });
-    }
+    } */
 
     _ToggleNextScreenButton = (e) => {
 
-        let currentState = this.state['validationrules']; 
+        let currentState = this.props.prefObj['validationrules']; 
 
         let checkboxStatus =  Object.keys(currentState).map( (value) => {
             return currentState[value];
         });       
 
         let ArrayOfCheckboxValues = checkboxStatus.some((value) => {
-            return value === true;
+            return !!value;
         });
+
+        e.preventDefault();
+
+        let formData = {
+            generalInfo : {
+                ...this.props.genObj
+            },
+            preferences : {
+                ...this.props.prefObj
+            }
+        }
         
         if(!ArrayOfCheckboxValues) {
             e.preventDefault();
@@ -66,30 +78,70 @@ class Preferences extends Component {
                         <h2>What are your preferences in Vehicle</h2>
                         <ul>
                             <li>
-                                <input name="preferenceSupercars" type="checkbox" onChange={ this._updateCheckBoxButtonValues } />
+                                <input name="preferenceSupercars" 
+                                       type="checkbox"
+                                       value="My preference is Supercars" 
+                                       onChange={ (e) => { this.props.validateCheckboxInput({
+                                           name  : e.target.getAttribute('name'), 
+                                           value : e.target.checked ? e.target.getAttribute('value') : false
+                                        })}
+                                       }
+                                       />
                                 <label>My preference is Supercars</label>
                             </li>
                             <li>
-                                <input name="preferenceCruiserBikes" type="checkbox" onChange={ this._updateCheckBoxButtonValues } />
+                                <input name="preferenceCruiserBikes"
+                                       value="My preference is Cruiser Bikes" 
+                                       type="checkbox" 
+                                       onChange={ (e) => { this.props.validateCheckboxInput({
+                                           name  : e.target.getAttribute('name'), 
+                                           value : e.target.checked ? e.target.getAttribute('value') : false
+                                        })}
+                                       }
+                                       />
                                 <label>My preference is Cruiser Bikes</label>
                             </li>
                             <li>
-                                <input name="preferenceCoupcars" type="checkbox" onChange={ this._updateCheckBoxButtonValues } />
+                                <input name="preferenceCoupcars" 
+                                       type="checkbox"
+                                       value="My preference is Coup cars" 
+                                       onChange={ (e) => { this.props.validateCheckboxInput({
+                                           name  : e.target.getAttribute('name'), 
+                                           value : e.target.checked ? e.target.getAttribute('value') : false
+                                        })}
+                                       }
+                                       />
                                 <label>My preference is Coup cars</label>
                             </li>
                             <li>
-                                <input name="preferenceSedancars" type="checkbox" onChange={ this._updateCheckBoxButtonValues } />
+                                <input name="preferenceSedancars" 
+                                       type="checkbox"
+                                       value="My preference is Sedan cars" 
+                                       onChange={ (e) => { this.props.validateCheckboxInput({
+                                           name  : e.target.getAttribute('name'), 
+                                           value : e.target.checked ? e.target.getAttribute('value') : false
+                                        })}
+                                       }
+                                       />
                                 <label>My preference is Sedan cars</label>
                             </li>
                             <li>
-                                <input name="preferenceCitycar" type="checkbox" onChange={ this._updateCheckBoxButtonValues } />
+                                <input name="preferenceCitycar"
+                                       type="checkbox"
+                                       value="I prefer a city car Preferably" 
+                                       onChange={ (e) => { this.props.validateCheckboxInput({
+                                           name  : e.target.getAttribute('name'), 
+                                           value : ( e.target.checked && document.getElementsByName('preferenceCitycarName')[0].value !== "" ) ? e.target.getAttribute('value') : false
+                                        })}
+                                       }
+                                 />
                                 <label>I prefer a city car Preferably</label>
                                 <input 
                                     type="text" 
-                                    name="preferenceCitycarName" 
+                                    name="inputboxdisabled" 
                                     placeholder="city car preference" 
-                                    disabled={ this.state.inputboxdisabled }
-                                    onChange={ this._updateCheckBoxButtonValues } />
+                                    disabled={ this.props.prefObj.inputboxdisabled }
+                                    />
                             </li>
                         </ul>
                     </div>
@@ -104,4 +156,20 @@ class Preferences extends Component {
 
 }
 
-export default Preferences;
+
+const mapStateToProps = state => {
+    return {
+        genObj  : state.gen,        
+        prefObj : state.pref
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        validateCheckboxInput : (e) => dispatch({ type: 'VALI_CHEKBOX_INP' , payload : e })
+        // toggleInputDisable : (e) => dispatch({ type: 'TOGGLE_INPUT_DISABLE' , payload : e })
+    }
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Preferences);

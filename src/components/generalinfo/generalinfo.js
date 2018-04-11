@@ -8,16 +8,12 @@ import { connect } from 'react-redux';
 
 class GeneralInfo extends Component {
 
-    state = {
+    /* state = {
         genderRadioClick : false,
         ageRadioClick : false
-    }
+    } */
 
-    _screenRadioButtonValidation = (e) => {
-        
-    }
-
-    _updateRadioButtonValues = (e) => {
+    /* _updateRadioButtonValues = (e) => {
         let newStateOfCheckboxs = {
             genderRadioClick : Array.from(document.getElementsByName('customer_gender')).some( (elem , idx) => {  return elem.checked  }),
             ageRadioClick : Array.from(document.getElementsByName('customer_age')).some( (elem , idx) => {  return elem.checked  })
@@ -26,11 +22,11 @@ class GeneralInfo extends Component {
         this.setState({
             ...newStateOfCheckboxs
         });
-    }
+    } */
 
     _ToggleNextScreenButton = (e) => {
 
-        let currentState = this.state; 
+        let currentState = this.props.infoObj;        
 
         let checkboxStatus =  Object.keys(currentState).map( (value) => {
             return currentState[value];
@@ -46,7 +42,6 @@ class GeneralInfo extends Component {
     } 
 
     render() {
-        console.log(this.state.infoObj);
         return (
             <div className={ classes.screen2 } >
                 <table className={ classes.initial__survey__details__table }>
@@ -63,28 +58,45 @@ class GeneralInfo extends Component {
                     <tbody>
                         <tr>
                             <td>
-                                <input type="radio" name="genderRadio" onChange={ (e) => this.props.validateRadioInput(e) } />                                     
+                                <input type="radio" name="genderRadio" value="male" 
+                                       onChange={ (e) => { this.props.validateRadioInput({
+                                           name  : e.target.getAttribute('name'), 
+                                           value : e.target.getAttribute('value')
+                                       }) }
+                                    } />                                     
                                 <label>Male</label>
                             </td>
                             <td>
-                                <input type="radio" name="ageRadio" onChange={ (e) => this.props.validateRadioInput(e) } />                                   
+                                <input type="radio" name="ageRadio" value="Less than 35" 
+                                       onChange={ (e) => { this.props.validateRadioInput({
+                                           name  : e.target.getAttribute('name'), 
+                                           value : e.target.getAttribute('value')
+                                       }) } } />                                   
                                 <label>Less than 35</label>
                             </td>     
                         </tr>
                         <tr>
                             <td>
-                                <input type="radio" name="genderRadio" onChange={ (e) => this.props.validateRadioInput(e) } />                                    
+                                <input type="radio" name="genderRadio" value="Female" 
+                                       onChange={ (e) => { this.props.validateRadioInput({
+                                           name  : e.target.getAttribute('name'), 
+                                           value : e.target.getAttribute('value')
+                                       }) } } />                                    
                                 <label>Female</label>
                             </td>
                             <td>
-                                <input type="radio" name="ageRadio" onChange={ (e) => this.props.validateRadioInput(e) } />                                    
+                                <input type="radio" name="ageRadio" value="More than 35" 
+                                       onChange={ (e) => { this.props.validateRadioInput({
+                                           name  : e.target.getAttribute('name'), 
+                                           value : e.target.getAttribute('value')
+                                       }) } } />                                    
                                 <label>More than 35</label>
                             </td>     
                         </tr> 
                         <tr>
                             <td colSpan="2">
                                 <Link to="/preferences" className={ [classes.btn , classes["btn--fullwidth"] , classes.btn__next  ].join(' ') } 
-                                        onClick={ this._ToggleNextScreenButton } >
+                                        onClick={ (e) => this._ToggleNextScreenButton(e) } >
                                     Next
                                 </Link>
                             </td>   

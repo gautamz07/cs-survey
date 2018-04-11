@@ -1,5 +1,8 @@
-TASK :: Control application state through Redux.
-    - Make one parent component that loads all the child components.
-    - Setup redux store, reducers etc.
-    - Make multiple reducers for each screen.
-    .... TO be continued further.
+TASK :: 
+    - Work on slide trasitions.
+    - Style navigation checkout bar
+    
+    [NEXT] - Disable links in navigation
+        - See how to update active class on click of next button instead.
+    [IMPORTANT]
+        - Add axios for ajax   
