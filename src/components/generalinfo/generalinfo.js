@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import classes from './generalinfo.css';
 import { Link } from 'react-router-dom';
 // import 'icheck/skins/flat/aero.css';
-import { Checkbox, Radio } from 'react-icheck';
 import { connect } from 'react-redux';
+import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 
 
 class GeneralInfo extends Component {
@@ -18,7 +18,6 @@ class GeneralInfo extends Component {
             genderRadioClick : Array.from(document.getElementsByName('customer_gender')).some( (elem , idx) => {  return elem.checked  }),
             ageRadioClick : Array.from(document.getElementsByName('customer_age')).some( (elem , idx) => {  return elem.checked  })
         }
-
         this.setState({
             ...newStateOfCheckboxs
         });
@@ -58,13 +57,23 @@ class GeneralInfo extends Component {
                     <tbody>
                         <tr>
                             <td>
-                                <input type="radio" name="genderRadio" value="male" 
+                                {/* <input type="radio" name="genderRadio" value="male" 
                                        onChange={ (e) => { this.props.validateRadioInput({
                                            name  : e.target.getAttribute('name'), 
                                            value : e.target.getAttribute('value')
                                        }) }
                                     } />                                     
-                                <label>Male</label>
+                                <label>Male</label> */}
+                                <RadioButton
+                                       label="Male"
+                                       type="radio" 
+                                       name="genderRadio" 
+                                       value="male" 
+                                       onChange={ (e) => { this.props.validateRadioInput({
+                                           name  : e.target.getAttribute('name'), 
+                                           value : e.target.getAttribute('value')
+                                       }) }}
+                                />
                             </td>
                             <td>
                                 <input type="radio" name="ageRadio" value="Less than 35" 
@@ -77,12 +86,23 @@ class GeneralInfo extends Component {
                         </tr>
                         <tr>
                             <td>
-                                <input type="radio" name="genderRadio" value="Female" 
+                                {/* <input type="radio" name="genderRadio" value="Female" 
                                        onChange={ (e) => { this.props.validateRadioInput({
                                            name  : e.target.getAttribute('name'), 
                                            value : e.target.getAttribute('value')
                                        }) } } />                                    
-                                <label>Female</label>
+                                <label>Female</label> */}
+
+                                <RadioButton
+                                       label="Female"
+                                       type="radio" 
+                                       name="genderRadio" 
+                                       value="female" 
+                                       onChange={ (e) => { this.props.validateRadioInput({
+                                           name  : e.target.getAttribute('name'), 
+                                           value : e.target.getAttribute('value')
+                                       }) }}
+                                />
                             </td>
                             <td>
                                 <input type="radio" name="ageRadio" value="More than 35" 

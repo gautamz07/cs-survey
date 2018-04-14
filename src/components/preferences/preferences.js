@@ -3,6 +3,7 @@ import classes from './preferences.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios'; 
+import Checkbox from 'material-ui/Checkbox';
 
 class Preferences extends Component {
 

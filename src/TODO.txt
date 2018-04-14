@@ -1,8 +1,18 @@
-TASK :: 
-    - Work on slide trasitions.
-    - Style navigation checkout bar
+TASK ::
+    - Integrate material UI into app.
+    - See how to create a form 
+        - https://howto.caspio.com/getting-started/web-form/create-a-web-form-1-of-3-create-a-table/
+        - Make post request using axios.
+    - Style navigation checkout bar.
     
     [NEXT] - Disable links in navigation
         - See how to update active class on click of next button instead.
     [IMPORTANT]
-        - Add axios for ajax   
+        - Add axios for ajax  
+
+
+
+PASSWORD ::-
+  - https://free.caspio.com/
+      EMAIL    ::- buyakabuyaka@hotmail.com(fake email)
+      PASSWORD ::- 615CRBG6#pY4         
