@@ -3,7 +3,10 @@ import classes from './generalinfo.css';
 import { Link } from 'react-router-dom';
 // import 'icheck/skins/flat/aero.css';
 import { connect } from 'react-redux';
-import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
+
+import { withStyles } from 'material-ui/styles';
+import Radio, { RadioGroup } from 'material-ui/Radio';
+import { FormLabel, FormControl, FormControlLabel, FormHelperText } from 'material-ui/Form';
 
 
 class GeneralInfo extends Component {
@@ -64,7 +67,7 @@ class GeneralInfo extends Component {
                                        }) }
                                     } />                                     
                                 <label>Male</label> */}
-                                <RadioButton
+                                {/* <RadioButton
                                        label="Male"
                                        type="radio" 
                                        name="genderRadio" 
@@ -72,8 +75,21 @@ class GeneralInfo extends Component {
                                        onChange={ (e) => { this.props.validateRadioInput({
                                            name  : e.target.getAttribute('name'), 
                                            value : e.target.getAttribute('value')
+                                       }) }}       
+                                /> */}
+                                {/* <Radio value="female" control={<Radio />} label="Female"  />     */}
+                                <FormControlLabel
+
+                                       control={<Radio />}
+
+                                       label="Male" 
+                                       name="genderRadio" 
+                                       value="male" 
+                                       onChange={ (e) => { this.props.validateRadioInput({
+                                           name  : e.target.getAttribute('name'), 
+                                           value : e.target.getAttribute('value')
                                        }) }}
-                                />
+                                         />
                             </td>
                             <td>
                                 <input type="radio" name="ageRadio" value="Less than 35" 
@@ -93,7 +109,7 @@ class GeneralInfo extends Component {
                                        }) } } />                                    
                                 <label>Female</label> */}
 
-                                <RadioButton
+                                {/* <RadioButton
                                        label="Female"
                                        type="radio" 
                                        name="genderRadio" 
@@ -102,7 +118,20 @@ class GeneralInfo extends Component {
                                            name  : e.target.getAttribute('name'), 
                                            value : e.target.getAttribute('value')
                                        }) }}
-                                />
+                                /> */}
+
+                                <FormControlLabel
+
+                                       control={<Radio />}
+
+                                       label="Female"
+                                       name="genderRadio" 
+                                       value="female" 
+                                       onChange={ (e) => { this.props.validateRadioInput({
+                                           name  : e.target.getAttribute('name'), 
+                                           value : e.target.getAttribute('value')
+                                       }) }}
+                                    />
                             </td>
                             <td>
                                 <input type="radio" name="ageRadio" value="More than 35" 

@@ -12,29 +12,21 @@ class Surveyholder extends Component {
   render() {
     return (
         <BrowserRouter>
-              <div className="App">
-                <Navigation />
-                <Route path="/" exact component={ Welcome } />  
-                <Route path="/generalinfo" exact component={ Generalinfo } />
-                <Route path="/preferences" exact component={ Preferences } />
-              </div>
-
-                {/* <Route render={ ({ location }) => (
-                      <div className="App">
-                        <Navigation />
-                        <TransitionGroup>
-                          <CSSTransition key={location.key}  timeout={3000} classNames="fade">
-                            <Switch location={ location }>
-                              <Route path="/" exact component={ Welcome } />  
-                              <Route path="/generalinfo" exact component={ Generalinfo } />
-                              <Route path="/preferences" exact component={ Preferences } />
-                            </Switch>  
-                          </CSSTransition>    
-                        </TransitionGroup>          
-                      </div>
-                      )} /> */}
+            <Route render={ ({ location }) => (
+                  <div className="App">
+                    <Navigation />
+                    <TransitionGroup>
+                      <CSSTransition key={location.key}  timeout={0} classNames="fade">
+                        <Switch location={ location }>
+                          <Route path="/" exact component={ Welcome } />  
+                          <Route path="/generalinfo" exact component={ Generalinfo } />
+                          <Route path="/preferences" exact component={ Preferences } />
+                        </Switch>  
+                      </CSSTransition>    
+                    </TransitionGroup>          
+                  </div>
+              )} />
         </BrowserRouter>
-        
     );
   }
 }
