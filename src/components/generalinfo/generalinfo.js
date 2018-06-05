@@ -46,112 +46,64 @@ class GeneralInfo extends Component {
     render() {
         return (
             <div className={ classes.screen2 } >
-                <table className={ classes.initial__survey__details__table }>
-                    <thead>
-                        <tr>
-                            <td>
-                                Gender    
-                            </td>
-                            <td>
-                                    Age    
-                            </td>     
-                        </tr>     
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                {/* <input type="radio" name="genderRadio" value="male" 
-                                       onChange={ (e) => { this.props.validateRadioInput({
-                                           name  : e.target.getAttribute('name'), 
-                                           value : e.target.getAttribute('value')
-                                       }) }
-                                    } />                                     
-                                <label>Male</label> */}
-                                {/* <RadioButton
-                                       label="Male"
-                                       type="radio" 
-                                       name="genderRadio" 
-                                       value="male" 
-                                       onChange={ (e) => { this.props.validateRadioInput({
-                                           name  : e.target.getAttribute('name'), 
-                                           value : e.target.getAttribute('value')
-                                       }) }}       
-                                /> */}
-                                {/* <Radio value="female" control={<Radio />} label="Female"  />     */}
-                                <FormControlLabel
 
-                                       control={<Radio />}
+                <div className={ classes.generalinfoMainWrapper }>
+                    <FormControl component="fieldset" className={ classes.formControl } >
+                        <FormLabel component="legend">Gender</FormLabel>
+                        <RadioGroup
+                            aria-label="gender"
+                            name="genderRadio"
+                            value = { this.props.infoObj.genderRadio }
+                            onChange={ (e) => { this.props.validateRadioInput({
+                                    name  : e.target.getAttribute('name'), 
+                                    value : e.target.getAttribute('value')
+                                }) }}
+                            >
+                            <FormControlLabel
+                                control={<Radio />}
+                                label="Male" 
+                                value="male"
+                            />
+                            <FormControlLabel
+                                control={<Radio />}
+                                label="Female" 
+                                value="female"
+                            />
 
-                                       label="Male" 
-                                       name="genderRadio" 
-                                       value="male" 
-                                       onChange={ (e) => { this.props.validateRadioInput({
-                                           name  : e.target.getAttribute('name'), 
-                                           value : e.target.getAttribute('value')
-                                       }) }}
-                                         />
-                            </td>
-                            <td>
-                                <input type="radio" name="ageRadio" value="Less than 35" 
-                                       onChange={ (e) => { this.props.validateRadioInput({
-                                           name  : e.target.getAttribute('name'), 
-                                           value : e.target.getAttribute('value')
-                                       }) } } />                                   
-                                <label>Less than 35</label>
-                            </td>     
-                        </tr>
-                        <tr>
-                            <td>
-                                {/* <input type="radio" name="genderRadio" value="Female" 
-                                       onChange={ (e) => { this.props.validateRadioInput({
-                                           name  : e.target.getAttribute('name'), 
-                                           value : e.target.getAttribute('value')
-                                       }) } } />                                    
-                                <label>Female</label> */}
+                        </RadioGroup>
+                    </FormControl>
 
-                                {/* <RadioButton
-                                       label="Female"
-                                       type="radio" 
-                                       name="genderRadio" 
-                                       value="female" 
-                                       onChange={ (e) => { this.props.validateRadioInput({
-                                           name  : e.target.getAttribute('name'), 
-                                           value : e.target.getAttribute('value')
-                                       }) }}
-                                /> */}
+                    <FormControl component="fieldset" className={ classes.formControl } >
+                        <FormLabel component="legend">Age</FormLabel>
+                        <RadioGroup
+                            aria-label="gender"
+                            name="ageRadio"
+                            value = { this.props.infoObj.ageRadio }
+                            onChange={ (e) => { this.props.validateRadioInput({
+                                    name  : e.target.getAttribute('name'), 
+                                    value : e.target.getAttribute('value')
+                                }) }}
+                            >
+                            <FormControlLabel
+                                control={<Radio />}
+                                label="Less than 35" 
+                                value="Less than 35"
+                            />
+                            <FormControlLabel
+                                control={<Radio />}
+                                label="More than 35" 
+                                value="More than 35"
+                            />
 
-                                <FormControlLabel
+                        </RadioGroup>
+                    </FormControl>
 
-                                       control={<Radio />}
+                    <Link to="/preferences" className={ [classes.btn , classes["btn--fullwidth"] , classes.btn__next  ].join(' ') } 
+                            onClick={ (e) => this._ToggleNextScreenButton(e) } >
+                        Next
+                    </Link>
+                </div>    
 
-                                       label="Female"
-                                       name="genderRadio" 
-                                       value="female" 
-                                       onChange={ (e) => { this.props.validateRadioInput({
-                                           name  : e.target.getAttribute('name'), 
-                                           value : e.target.getAttribute('value')
-                                       }) }}
-                                    />
-                            </td>
-                            <td>
-                                <input type="radio" name="ageRadio" value="More than 35" 
-                                       onChange={ (e) => { this.props.validateRadioInput({
-                                           name  : e.target.getAttribute('name'), 
-                                           value : e.target.getAttribute('value')
-                                       }) } } />                                    
-                                <label>More than 35</label>
-                            </td>     
-                        </tr> 
-                        <tr>
-                            <td colSpan="2">
-                                <Link to="/preferences" className={ [classes.btn , classes["btn--fullwidth"] , classes.btn__next  ].join(' ') } 
-                                        onClick={ (e) => this._ToggleNextScreenButton(e) } >
-                                    Next
-                                </Link>
-                            </td>   
-                        </tr>     
-                    </tbody>   
-                </table>
             </div>
         );
     }

@@ -3,6 +3,7 @@ import classes from './preferences.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios'; 
+import { FormGroup, FormControlLabel } from 'material-ui/Form';
 import Checkbox from 'material-ui/Checkbox';
 
 class Preferences extends Component {
@@ -79,64 +80,94 @@ class Preferences extends Component {
                         <h2>What are your preferences in Vehicle</h2>
                         <ul>
                             <li>
-                                <input name="preferenceSupercars" 
-                                       type="checkbox"
-                                       value="My preference is Supercars" 
-                                       onChange={ (e) => { this.props.validateCheckboxInput({
-                                           name  : e.target.getAttribute('name'), 
-                                           value : e.target.checked ? e.target.getAttribute('value') : false
-                                        })}
-                                       }
-                                       />
-                                <label>My preference is Supercars</label>
+                                <FormControlLabel
+                                    className={ classes.formControl }
+                                    control={
+                                        <Checkbox
+                                            name="preferenceSupercars"
+                                            checked={ this.props.prefObj.validationrules.preferenceSupercars }
+                                            value="My preference is Supercars"
+                                            onChange={ (e) => { this.props.validateCheckboxInput({
+                                                    name  : e.target.getAttribute('name'), 
+                                                    value : e.target.checked ? e.target.getAttribute('value') : false
+                                                })}
+                                            }  
+                                        />
+                                    }
+                                    label="My preference is Supercars"
+                                />
                             </li>
                             <li>
-                                <input name="preferenceCruiserBikes"
-                                       value="My preference is Cruiser Bikes" 
-                                       type="checkbox" 
-                                       onChange={ (e) => { this.props.validateCheckboxInput({
-                                           name  : e.target.getAttribute('name'), 
-                                           value : e.target.checked ? e.target.getAttribute('value') : false
-                                        })}
-                                       }
-                                       />
-                                <label>My preference is Cruiser Bikes</label>
+                               <FormControlLabel
+                                    className={ classes.formControl }
+                                    control={
+                                        <Checkbox
+                                            name="preferenceCruiserBikes"
+                                            checked={ this.props.prefObj.validationrules.preferenceCruiserBikes }
+                                            value="My preference is Cruiser Bikes"
+                                            onChange={ (e) => { this.props.validateCheckboxInput({
+                                                    name  : e.target.getAttribute('name'), 
+                                                    value : e.target.checked ? e.target.getAttribute('value') : false
+                                                })}
+                                            }  
+                                        />
+                                    }
+                                    label="My preference is Cruiser Bikes"
+                                />      
                             </li>
                             <li>
-                                <input name="preferenceCoupcars" 
-                                       type="checkbox"
-                                       value="My preference is Coup cars" 
-                                       onChange={ (e) => { this.props.validateCheckboxInput({
-                                           name  : e.target.getAttribute('name'), 
-                                           value : e.target.checked ? e.target.getAttribute('value') : false
-                                        })}
-                                       }
-                                       />
-                                <label>My preference is Coup cars</label>
+                               <FormControlLabel
+                                    className={ classes.formControl }
+                                    control={
+                                        <Checkbox
+                                            name="preferenceCoupcars"
+                                            checked={ this.props.prefObj.validationrules.preferenceCoupcars }
+                                            value="My preference is Coup cars"
+                                            onChange={ (e) => { this.props.validateCheckboxInput({
+                                                    name  : e.target.getAttribute('name'), 
+                                                    value : e.target.checked ? e.target.getAttribute('value') : false
+                                                })}
+                                            }  
+                                        />
+                                    }
+                                    label="My preference is Coup cars"
+                                />
                             </li>
                             <li>
-                                <input name="preferenceSedancars" 
-                                       type="checkbox"
-                                       value="My preference is Sedan cars" 
-                                       onChange={ (e) => { this.props.validateCheckboxInput({
-                                           name  : e.target.getAttribute('name'), 
-                                           value : e.target.checked ? e.target.getAttribute('value') : false
-                                        })}
-                                       }
-                                       />
-                                <label>My preference is Sedan cars</label>
+                                <FormControlLabel
+                                    className={ classes.formControl }
+                                    control={
+                                        <Checkbox
+                                            name="preferenceSedancars"
+                                            checked={ this.props.prefObj.validationrules.preferenceSedancars }
+                                            value="My preference is Sedan cars"
+                                            onChange={ (e) => { this.props.validateCheckboxInput({
+                                                    name  : e.target.getAttribute('name'), 
+                                                    value : e.target.checked ? e.target.getAttribute('value') : false
+                                                })}
+                                            }  
+                                        />
+                                    }
+                                    label="My preference is Sedan cars"
+                                />  
                             </li>
                             <li>
-                                <input name="preferenceCitycar"
-                                       type="checkbox"
-                                       value="I prefer a city car Preferably" 
-                                       onChange={ (e) => { this.props.validateCheckboxInput({
-                                           name  : e.target.getAttribute('name'), 
-                                           value : ( e.target.checked && document.getElementsByName('preferenceCitycarName')[0].value !== "" ) ? e.target.getAttribute('value') : false
-                                        })}
-                                       }
-                                 />
-                                <label>I prefer a city car Preferably</label>
+                               <FormControlLabel
+                                    className={ classes.formControl }
+                                    control={
+                                        <Checkbox
+                                            name="preferenceCitycar"
+                                            checked={ this.props.prefObj.validationrules.preferenceCitycar }
+                                            value="I prefer a city car Preferably"
+                                            onChange={ (e) => { this.props.validateCheckboxInput({
+                                                    name  : e.target.getAttribute('name'), 
+                                                    value : e.target.checked ? e.target.getAttribute('value') : false
+                                                })}
+                                            }  
+                                        />
+                                    }
+                                    label="I prefer a city car Preferably"
+                                />
                                 <input 
                                     type="text" 
                                     name="inputboxdisabled" 

@@ -16,7 +16,7 @@ class Surveyholder extends Component {
                   <div className="App">
                     <Navigation />
                     <TransitionGroup>
-                      <CSSTransition key={location.key}  timeout={0} classNames="fade">
+                      <CSSTransition key={location.key}  timeout={300} classNames="fade">
                         <Switch location={ location }>
                           <Route path="/" exact component={ Welcome } />  
                           <Route path="/generalinfo" exact component={ Generalinfo } />
